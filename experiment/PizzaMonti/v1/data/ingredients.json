@@ -1,0 +1,93 @@
+{
+  "bases": [
+    {"id":0, "name":"tomate", "ingredients":["Sauce tomate","Mozzarella","Emmental"]},
+    {"id":1, "name":"blanche", "ingredients":["Crème","Mozzarella","Emmental"]}
+  ],
+  "ingredients": [
+    {"name":"Tomate","as":[
+      {"name":"Sauce tomate"},
+      {"name":"Tomates 'Cerise'"}
+    ]},
+    {"name":"Laitiers","as":[
+      {"name":"Fromage"},
+      {"name":"Roquefort"},
+      {"name":"Chèvre"},
+      {"name":"Ricotta"},
+      {"name":"Copeaux de Parmesan frais"},
+      {"name":"Gorgonzola"},
+      {"name":"Blanche Gorgonzola"},
+      {"name":"Mozzarella"},
+      {"name":"Emmental"},
+      {"name":"Raclette"},
+      {"name":"Reblochon"},
+      {"name":"Feta Grecque"}
+    ]},
+    {"name":"Viande","as":[
+      {"name":"Jambon"},
+      {"name":"Chorizo doux"},
+      {"name":"Boeuf haché"},
+      {"name":"Emincé Kebab (dinde & veau)"},
+      {"name":"Emincé de poulet rôti"},
+      {"name":"Lardons"},
+      {"name":"Saucisse fumée de Montbelliard"},
+      {"name":"Merguez"},
+      {"name":"Figatelli Corse (saucisse fumée et très parfumée)"},
+      {"name":"Carpaccio de boeuf"},
+      {"name":"Jambon de Parme"}
+    ]},
+    {"name":"Poisson","as":[
+      {"name":"Filets d’Anchois"},
+      {"name":"Moules"},
+      {"name":"St Jacques"},
+      {"name":"Fruits de mer"},
+      {"name":"Ecrevisses"},
+      {"name":"Fumet de crustacés (base de sauce)"},
+      {"name":"Saumon frais marinés à la ciboulette"},
+      {"name":"Thon"}
+    ]},
+    {"name":"Legumes","as":[
+      {"name":"Poivrons grillés"},
+      {"name":"Etuvée de poireaux"},
+      {"name":"Coeurs d’artichauts"},
+      {"name":"Aubergines","as":[
+        {"name":"Aubergines fraiches cuisinées"},
+        {"name":"Aubergines cuisinées"}
+      ]},
+      {"name":"Champignons","as":[
+        {"name":"Champignons frais cuisinés"}
+      ]}
+    ]},
+    {"name":"Oleagineux","as":[
+      {"name":"Noisettes"},
+      {"name":"Noix"}
+    ]},
+    {"name":"Sauce","as":[
+      {"name":"Sauce basilic"},
+      {"name":"Sauce Barbecue"},
+      {"name":"Crème"}
+    ]},
+    {"name":"Condiments","as":[
+      {"name":"Epices"},
+      {"name":"Moutarde à l’ancienne"},
+      {"name":"Ciboulette"},
+      {"name":"Oignons"},
+      {"name":"Câpres"},
+      {"name":"Pesto Basilic"},
+      {"name":"Ail mariné à l’huile d’olive"},
+      {"name":"Vinaigre balsamique"},
+      {"name":"Persillade"},
+      {"name":"Tapenade noire"}
+    ]},
+    {"name":"Autres","as":[
+      {"name":"Pates","as":[
+        {"name":"Ravioles des Grands Goulets"}
+      ]},
+      {"name":"Oeuf"},
+      {"name":"Roquette (salade)"},
+      {"name":"Ananas"},
+      {"name":"Quenelle"},
+      {"name":"Pomme de terre"}
+    ]}
+
+  ]
+}

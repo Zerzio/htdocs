@@ -1,0 +1,575 @@
+<pizzas>
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">MARGHARITA</p>
+                <p class="desig">Sauce tomate, Fromage</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">8.00</p>
+                <p class="prix1">4.90</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">MARINARA</p>
+                <p class="desig">Sauce tomate, Ail mariné à l’huile d’olive, Fromage</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">8.20</p>
+                <p class="prix1">5.10</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">REINE</p>
+                <p class="desig">Jambon, Fromage</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">9.20</p>
+                <p class="prix1">6.10</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">NAPOLITAINE</p>
+                <p class="desig">Filets d’Anchois, Câpres, Tomates 'Cerise', Vinaigre balsamique</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">9.50</p>
+                <p class="prix1">7.40</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">ROQUEFORT</p>
+                <p class="desig">Roquefort, Noix, Crème</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">9.40</p>
+                <p class="prix1">6.30</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">REINE BOEUF</p>
+                <p class="desig">Boeuf haché, Fromage</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">9.60</p>
+                <p class="prix1">6.50</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">FLAMENCO</p>
+                <p class="desig">Chorizo doux, Oignons</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">10.50</p>
+                <p class="prix1">7.30</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">BERGÈRE</p>
+                <p class="desig">Jambon, Chèvre, Noix, Persillade</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">10.50</p>
+                <p class="prix1">7.40</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">ORIENTALE</p>
+                <p class="desig">Merguez, Oignons, Poivrons grillés</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">10.80</p>
+                <p class="prix1">7.50</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">PROVENCALE</p>
+                <p class="desig">Filet d’Anchois, Oignons, Poivrons grillés, Tomates 'Cerise', Vinaigre balsamique, Persillade</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">11.70</p>
+                <p class="prix1">8.50</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">KEBAB</p>
+                <p class="desig">Emincé Kebab (dinde &amp; veau), Oignons, Crème</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">11.30</p>
+                <p class="prix1">8.20</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">PROCIDA</p>
+                <p class="desig">Jambon, Ricotta, Tomates 'Cerise', Coeurs d’artichauts, Ciboulette</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">11.80</p>
+                <p class="prix1">8.60</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">NIÇOISE</p>
+                <p class="desig">Thon, Tapenade noire, Câpres, Tomates cerises</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">11.70</p>
+                <p class="prix1">8.70</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">CALZONE (Chausson)</p>
+                <p class="desig">Jambon, Champignons, Chèvre</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2"></p>
+                <p class="prix1">9.00</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">SORENTO</p>
+                <p class="desig">Jambon, Champignons frais cuisinés, Oignons, Oeuf</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">11.40</p>
+                <p class="prix1">8.90</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">PARMESANE</p>
+                <p class="desig">Copeaux de Parmesan frais, Tomates 'Cerise', Roquette (salade)</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.10</p>
+                <p class="prix1">9.00</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">PARMIGIANA</p>
+                <p class="desig">Aubergines cuisinées, Copeaux de Parmesan frais, Oignons</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">12.10</p>
+                <p class="prix1">9.00</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">5 FROMAGES</p>
+                <p class="desig">Gorgonzola, Chèvre, Ricotta, Mozzarella, Emmental</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.30</p>
+                <p class="prix1">9.20</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">OCEANE</p>
+                <p class="desig">Moules, St Jacques, Fruits de mer, Crème, Persillade</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">12.80</p>
+                <p class="prix1">9.80</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">VÉGÉTARIENNE</p>
+                <p class="desig">Aubergines cuisinées, Champignons frais cuisinées, Oignons, Tomates 'Cerise', Coeurs d’artichauts</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.80</p>
+                <p class="prix1">9.80</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">EXOTIQUE</p>
+                <p class="desig">Emincé de poulet rôti, Ananas, Tomates 'Cerise', Oignons, Epices</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">13.50</p>
+                <p class="prix1">10.30</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">MIXED GRILL</p>
+                <p class="desig">Boeuf haché, Chorizo doux , Merguez, Poivrons grillés, Oignons</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">13.80</p>
+                <p class="prix1">10.60</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">PARMA</p>
+                <p class="desig">Jambon de Parme, Ricotta, Tomates 'Cerise', Roquette (salade)</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">13.80</p>
+                <p class="prix1">10.60</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">BOLOGNAISE</p>
+                <p class="desig">Boeuf haché, Copeaux de Parmesan frais, Oignons, Tomates 'Cerise', Roquette (salade)</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">13.90</p>
+                <p class="prix1">10.70</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">GRECQUE</p>
+                <p class="desig">Aubergines cuisinées, Boeuf haché, Tomates 'Cerise' Feta Grecque</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">13.90</p>
+                <p class="prix1">10.70</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">CHAROLAISE</p>
+                <p class="desig">Carpaccio de boeuf, Roquette (salade), Oignons, Sauce basilic</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">13.80</p>
+                <p class="prix1"></p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">CORSICA</p>
+                <p class="desig">Figatelli Corse (saucisse fumée et très parfumée), Ricotta</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">14.30</p>
+                <p class="prix1">11.20</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">BBQ</p>
+                <p class="desig">Sauce Barbecue, Boeuf haché, Oignons, Poivrons grillés, Crème</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">11.20</p>
+                <p class="prix1">8.10</p>
+
+            </div>
+        </article>
+
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">ALSACIENNE</p>
+                <p class="desig">Lardons, Oignons, Crème</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">8.20</p>
+                <p class="prix1">5.20</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">REINE BLANCHE</p>
+                <p class="desig">Jambon, Crème, Persillade</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">9.20</p>
+                <p class="prix1">6.10</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">CARBONARA</p>
+                <p class="desig">Lardons, Ricotta, Oeuf, Ciboulette</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">11.80</p>
+                <p class="prix1">9.30</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">DIJONNAISE</p>
+                <p class="desig">Emincé de poulet rôti, Moutarde à l’ancienne, Oignons, Ciboulette</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.10</p>
+                <p class="prix1">9.00</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">CALZONE BLANCHE (chausson)</p>
+                <p class="desig">Jambon, Gorgonzola, Oeuf</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2"></p>
+                <p class="prix1">9.00</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">INDIENNE</p>
+                <p class="desig">Emincé de poulet rôti, Poivrons grillés, Oignon, Epices</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.10</p>
+                <p class="prix1">9.00</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">5 FROMAGES blanche</p>
+                <p class="desig">Blanche Gorgonzola, Chèvre, Ricotta, Mozzarella, Emmental</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">12.30</p>
+                <p class="prix1">9.20</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">LYONNAISE</p>
+                <p class="desig">Emincé de poulet rôti, Quenelle, Champignons frais cuisinés, Ciboulette</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.60</p>
+                <p class="prix1">9.50</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">RACLETTE</p>
+                <p class="desig">Pomme de terre, Lardons, Raclette, Oignons</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">12.60</p>
+                <p class="prix1">9.50</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">POULET ECREVISSES</p>
+                <p class="desig">Emincé de poulet rôti, Ecrevisses, Fumet de crustacés (base de sauce)</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">12.40</p>
+                <p class="prix1">9.30</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">RAVIOLES</p>
+                <p class="desig">Ravioles des Grands Goulets, Champignons frais cuisinés, Persillade</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">12.70</p>
+                <p class="prix1">9.50</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">RAVIOLES SAUMON</p>
+                <p class="desig">Ravioles des Grands Goulets, Saumon frais marinés à la ciboulette, Etuvée de poireaux</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">13.80</p>
+                <p class="prix1">10.60</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">RAVIOLES ROQUEFORT</p>
+                <p class="desig">Ravioles des Grands Goulets, Roquefort</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">13.80</p>
+                <p class="prix1">10.60</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">SAVOYARDE</p>
+                <p class="desig">Reblochon, Saucisse fumée de Montbelliard, Champignons frais cuisinés, Oignons</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">13.70</p>
+                <p class="prix1"></p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod1">
+                <p class="produit">PESTO</p>
+                <p class="desig">Jambon, Crème, Pesto Basilic</p>
+            </div>
+            <div class="rub4 blocprod1">
+                <p class="prix2">9.40</p>
+                <p class="prix1">6.30</p>
+
+            </div>
+        </article>
+
+
+        <article class="blocprod">
+            <div class="rub3 blocprod2">
+                <p class="produit">GOURMANDE</p>
+                <p class="desig">Aubergines fraiches cuisinées, Jambon de Parme, Noisettes</p>
+            </div>
+            <div class="rub4 blocprod2">
+                <p class="prix2">13.90</p>
+                <p class="prix1">10.70</p>
+
+            </div>
+        </article>
+
+</pizzas>

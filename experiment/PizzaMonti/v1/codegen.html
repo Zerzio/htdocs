@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza Finder</title>
+    <script src="lodash.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="pizza.js"></script>
+    <script src="codegen.js"></script>
+</head>
+<body ng-app="PizzaFinder">
+
+<div ng-controller="gen as gen">
+    <pre>{{ gen.pizzas | json }}</pre>
+</div>
+</body>
+</html>
