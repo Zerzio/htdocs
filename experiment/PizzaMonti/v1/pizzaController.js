@@ -12,19 +12,25 @@
         /* jshint validthis: true */
         var vm = this;
 
-        var test = pizzaFactory.init().then(function(q) {
-            console.log("pizzaFactory.init returned...");
-            console.log(q);
-        });
-
         vm.activate = activate;
         vm.title = 'pizzaController';
 
+        vm.content = pizzaFactory.content;
+
         vm.ingredients = [];
-        var allPizzas = [];
+        var allPizzas = pizzaFactory.content.allPizzas;
         vm.base = [];
         vm.indexedIngredients = {};
         vm.pizzas = []; // will be always be mapped to getSortedPizzas();
+
+        var test = pizzaFactory.init().then(function(q) {
+            console.log("pizzaFactory.init returned...");
+            vm.ingredients = pizzaFactory.content.ingredients;
+            allPizzas = pizzaFactory.content.allPizzas;
+            vm.base = pizzaFactory.content.base;
+            vm.indexedIngredients = pizzaFactory.content.indexedIngredients;
+            vm.pizzas = getSortedPizzas();
+        });
 
         vm.wishedIngredients = {
             items: [],
@@ -79,6 +85,8 @@
         };
 
         activate();
+
+        /////////////////////////////////
 
         function getSortedPizzas() {
             console.log("getSortedPizzas()");
@@ -140,7 +148,7 @@
 
         function activate() {
 
-            init();
+            //init();
 
             // fetch all data
             function init() {

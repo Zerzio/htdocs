@@ -13,10 +13,12 @@
 
         var service = {
             "init": init,
-            "base" : [],
-            "ingredients" : [],
-            "allPizzas" : [],
-            "indexedIngredients" : {}
+            "content": {
+                "base": [],
+                "ingredients": [],
+                "allPizzas": [],
+                "indexedIngredients": {}
+            }
         };
 
         return service;
@@ -31,37 +33,10 @@
                     var base = response.data.bases;
                     var ingredients = response.data.ingredients;
 
-                    _.map(service.ingredients, function (ingredient) {
-                        computeFamily(ingredient, []);
-                    });
-                    _.map(service.ingredients, function (ingredient) {
-                        indexFamily(ingredient, service.indexedIngredients);
-                    });
-
                     return {
                         "base":base,
                         "ingredients":ingredients
                     };
-
-                    function computeFamily(ingredient, parentFamily) {
-                        ingredient.family = ingredient.family || _.clone(parentFamily);
-                        ingredient.family.push(ingredient.name);
-                        var childFamily = _.clone(ingredient.family);
-                        if (ingredient.as) {
-                            _.map(ingredient.as, function (childIngredient) {
-                                computeFamily(childIngredient, childFamily);
-                            });
-                        }
-                    }
-
-                    function indexFamily(ingredient, index) {
-                        index[ingredient.name] = ingredient.family;
-                        if (ingredient.as) {
-                            _.map(ingredient.as, function (childIngredient) {
-                                indexFamily(childIngredient, index);
-                            });
-                        }
-                    }
 
                 });
 
@@ -72,17 +47,46 @@
                     return allPizzas
                 });
 
-            var pizzas = $q.all({pizzaPromise : pizzaPromise, ingredientsPromise : ingredientsPromise});
+            var pizzas = $q.all({"pizzaPromise" : pizzaPromise, "ingredientsPromise" : ingredientsPromise});
 
-            pizzas.then(function () {
+            pizzas.then(function (p) {
                 console.log("pizzaFactory received all");
-                service.base = ingredientsPromise.base;
-                service.ingredients = ingredientsPromise.ingredients;
-                service.allPizzas = pizzaPromise;
+                service.content.base = p.ingredientsPromise.base;
+                service.content.ingredients = p.ingredientsPromise.ingredients;
+                service.content.allPizzas = p.pizzaPromise;
+
+                _.map(service.content.ingredients, function (ingredient) {
+                    computeFamily(ingredient, []);
+                });
+                _.map(service.content.ingredients, function (ingredient) {
+                    indexFamily(ingredient, service.content.indexedIngredients);
+                });
+
+
             });
 
 
             return pizzas;
+        }
+
+        function computeFamily(ingredient, parentFamily) {
+            ingredient.family = ingredient.family || _.clone(parentFamily);
+            ingredient.family.push(ingredient.name);
+            var childFamily = _.clone(ingredient.family);
+            if (ingredient.as) {
+                _.map(ingredient.as, function (childIngredient) {
+                    computeFamily(childIngredient, childFamily);
+                });
+            }
+        }
+
+        function indexFamily(ingredient, index) {
+            index[ingredient.name] = ingredient.family;
+            if (ingredient.as) {
+                _.map(ingredient.as, function (childIngredient) {
+                    indexFamily(childIngredient, index);
+                });
+            }
         }
     }
 })();
