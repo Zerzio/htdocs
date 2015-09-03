@@ -101,17 +101,6 @@
                 var pizza = allPizzas[pizzaIndex];
                 if (vm.wishedIngredients.items.length > 0 | vm.wishedIngredients.excluded.length > 0) {
 
-                    function computeIngredients(ingredients) {
-                        var computedIngredients = _.chain(ingredients)
-                            .map(function (ingredient) {
-                                return vm.indexedIngredients[ingredient];
-                            })
-                            .flatten()
-                            .union()
-                            .value();
-                        return computedIngredients;
-                    }
-
                     var ingredients, commonIngredients;
                     if (true) {
                         var computedPizzaIngredients = computeIngredients(pizza.ingredients);
@@ -132,6 +121,17 @@
                 if (_.indexOf(vm.wishedBases.items, pizza.base) < 0) percentage = percentage - 101;
 
                 return percentage;
+
+                function computeIngredients(ingredients) {
+                    var computedIngredients = _.chain(ingredients)
+                        .map(function (ingredient) {
+                            return vm.indexedIngredients[ingredient];
+                        })
+                        .flatten()
+                        .union()
+                        .value();
+                    return computedIngredients;
+                }
             }
 
         }
