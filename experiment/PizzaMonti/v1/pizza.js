@@ -2,18 +2,21 @@
 
     var app = angular.module("PizzaFinder", []);
 
-    app.controller("pizzaController", ['$q','$http', function ($q,$http) {
+    app.controller("pizzaController", ['pizzaFactory','$q','$http', function (pizzaFactory,$q,$http) {
+        console.log("pizzaController");
 
         var vm = this;
         vm.ingredients = [];
         var allPizzas = [];
         vm.base = [];
         vm.indexedIngredients = {};
+        vm.pizzas = []; // will be always be mapped to getSortedPizzas();
 
         init();
 
         // fetch all data
         function init() {
+            console.log("init()");
             var pizzaPromise = $http.get('data/ingredients.json').
                 then(function(response) {
                     console.log("received Ingredients");
@@ -104,9 +107,7 @@
             vm.pizzas = getSortedPizzas();
         };
 
-        vm.getMatchColor = function(pizzaIndex) {
-            var matchScore = getMatchScore(pizzaIndex);
-            if (isNaN(matchScore)) { return "match_na"; }
+        vm.getMatchColor = function(matchScore) {
             var intensity = 55 + (matchScore * 2);
             var color = (intensity > 55) ? 'rgb(0,' + intensity + ',0)' : 'rgb(200,200,200)';
             var style = {"background-color": color};
@@ -117,33 +118,8 @@
             if (_.includes(vm.wishedIngredients.excluded, ingredient)) return "isExcluded";
         };
 
-        function getMatchScore(pizzaIndex) {
-            var percentage = 0;
-            var pizza = allPizzas[pizzaIndex];
-            if (vm.wishedIngredients.items.length > 0 | vm.wishedIngredients.excluded.length > 0) {
-                function computeIngredients(ingredients) {
-                    var computedIngredients = _.union(_.flatten(_.map(ingredients, function (ingredient) {
-                        return vm.indexedIngredients[ingredient];
-                    })));
-                    return computedIngredients;
-                }
-                var computedPizzaIngredients = computeIngredients(pizza.ingredients);
-                var computedWishedIngredients = computeIngredients(vm.wishedIngredients.items);
-                var ingredients = _.union(computedPizzaIngredients, computeIngredients(vm.base[pizza.base].ingredients));
-                var commonIngredients = _.intersection(computedWishedIngredients, ingredients);
-                percentage = Math.round(100 * commonIngredients.length / computedWishedIngredients.length);
-                if (isNaN(percentage)) percentage = 0;
-                if (_.intersection(vm.wishedIngredients.excluded,computedPizzaIngredients).length > 0) percentage = percentage - 101;
-                //var ingredients = _.union(pizza.ingredients, vm.base[pizza.base].ingredients);
-                //var commonIngredients = _.intersection(vm.wishedIngredients.items, ingredients);
-                //percentage = Math.round(100 * commonIngredients.length / vm.wishedIngredients.items.length);
-            }
-            if (_.indexOf(vm.wishedBases.items,pizza.base)<0) percentage = percentage - 101;
-
-            return percentage;
-        }
-
         function getSortedPizzas() {
+            console.log("getSortedPizzas()");
             var scoredPizzas = _.map(allPizzas, function(pizza, id) {
                 var newPizza = _.cloneDeep(pizza);
                 newPizza.score = getMatchScore(id);
@@ -153,6 +129,48 @@
                 return -1 * pizza.score;
             });
             return sortedPizzas;
+
+            function getMatchScore(pizzaIndex) {
+                /*
+                 * Test with:
+                 * Jambon, Fromage, Persillade
+                 */
+                var percentage = 0;
+                var pizza = allPizzas[pizzaIndex];
+                if (vm.wishedIngredients.items.length > 0 | vm.wishedIngredients.excluded.length > 0) {
+
+                    function computeIngredients(ingredients) {
+                        var computedIngredients = _.chain(ingredients)
+                            .map(function (ingredient) {
+                                return vm.indexedIngredients[ingredient];
+                            })
+                            .flatten()
+                            .union()
+                            .value();
+                        return computedIngredients;
+                    }
+
+                    var ingredients, commonIngredients;
+                    if (true) {
+                        var computedPizzaIngredients = computeIngredients(pizza.ingredients);
+                        var computedWishedIngredients = computeIngredients(vm.wishedIngredients.items);
+                        ingredients = _.union(computedPizzaIngredients, computeIngredients(vm.base[pizza.base].ingredients));
+                        commonIngredients = _.intersection(computedWishedIngredients, ingredients);
+                        percentage = Math.round(100 * commonIngredients.length / computedWishedIngredients.length);
+                        if (_.intersection(vm.wishedIngredients.excluded,computedPizzaIngredients).length > 0) percentage = percentage - 101;
+                    } else {
+                        ingredients = _.union(pizza.ingredients, vm.base[pizza.base].ingredients);
+                        commonIngredients = _.intersection(vm.wishedIngredients.items, ingredients);
+                        percentage = Math.round(100 * commonIngredients.length / vm.wishedIngredients.items.length);
+                    }
+
+                    if (isNaN(percentage)) percentage = 0;
+
+                }
+                if (_.indexOf(vm.wishedBases.items,pizza.base)<0) percentage = percentage - 101;
+
+                return percentage;
+            }
         }
 
     }]);

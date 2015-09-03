@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="pizza.css">
     <script src="vendor/lodash.js"></script>
     <script src="vendor/angular.min.js"></script>
-    <script src="pizza.js"></script>
+    <script src="PizzaFinder.module.js"></script>
+    <script src="pizzaController.js"></script>
+    <script src="pizzaFactory.js"></script>
 </head>
 <body ng-app="PizzaFinder">
 
@@ -40,7 +42,7 @@
     <hr>
 
     <b>Pizzas:</b>
-    <div ng-repeat="pizza in vm.pizzas" ng-style="vm.getMatchColor(pizza.id)">
+    <div ng-repeat="pizza in vm.pizzas" ng-style="vm.getMatchColor(pizza.score)">
         {{ pizza.id }}. {{ pizza.name }} <i>({{ pizza.score }})</i>
         <span ng-repeat="ingredient in pizza.ingredients" ng-class="vm.getIngredientPresentClass(ingredient)">
             <a href="#" ng-click="vm.wishedIngredients.add(ingredient)">{{ ingredient }}</a>
