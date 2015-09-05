@@ -9,46 +9,54 @@
     <script src="PizzaFinder.module.js"></script>
     <script src="pizzaController.js"></script>
     <script src="pizzaFactory.js"></script>
+    <script src="pizzaFilterFactory.js"></script>
 </head>
 <body ng-app="PizzaFinder">
 
-<div ng-controller="pizzaController as vm">
-    <hr>
-    <b>Filtrage de base:</b>
-    <span ng-repeat="ingredient in vm.ingredients">
-        <a href="#" ng-click="vm.wishedIngredients.add(ingredient.name)">{{ ingredient.name }}</a>
-    </span>
-    <hr>
-    <div><b>Ingrédients désirés:</b>
-        <span ng-repeat="ingredientName in vm.wishedIngredients.items">
-            <a href="#" ng-click="vm.wishedIngredients.remove(ingredientName)">{{ ingredientName }}</a>,
-        </span>
-    </div>
-    <hr>
-    <div><b>Bases désirées:</b>
-        <span ng-repeat="base in vm.wishedBases.items">
-            <a href="#" ng-click="vm.wishedBases.set(base)">{{ vm.base[$index].name }}</a>,
-        </span>
-        <span>
-            <a href="#" ng-click="vm.wishedBases.clear()">Les deux</a>
-        </span>
-    </div>
-    <hr>
-    <div><b>Ingrédients à exclure:</b>
-        <span ng-repeat="ingredientName in vm.wishedIngredients.excluded">
-            <a href="#" ng-click="vm.wishedIngredients.removeExcluded(ingredientName)">{{ ingredientName }}</a>,
-        </span>
-    </div>
-    <hr>
+<div ng-controller="pizzaController as vm" ng-switch="vm.loaded">
 
-    <b>Pizzas:</b>
-    <div ng-repeat="pizza in vm.pizzas" ng-style="vm.getMatchColor(pizza.score)">
-        {{ pizza.id }}. {{ pizza.name }} <i>({{ pizza.score }})</i>
-        <span ng-repeat="ingredient in pizza.ingredients" ng-class="vm.getIngredientPresentClass(ingredient)">
-            <a href="#" ng-click="vm.wishedIngredients.add(ingredient)">{{ ingredient }}</a>
-            <a href="#" ng-click="vm.wishedIngredients.exclude(ingredient)">(-)</a>, </span>
-        <span><i>(base:{{ vm.base[pizza.base].name }})</i></span>
+    <hr>
+    <div ng-switch-when="loaded">
+
+        <b>Filtrage de base:</b>
+        <span ng-repeat="ingredient in vm.ingredients">
+            <a href="#" ng-click="vm.wishedIngredients.add(ingredient.name)">{{ ingredient.name }}</a>
+        </span>
+        <hr>
+        <div><b>Ingrédients désirés:</b>
+            <span ng-repeat="ingredientName in vm.wishedIngredients.items">
+                <a href="#" ng-click="vm.wishedIngredients.remove(ingredientName)">{{ ingredientName }}</a>,
+            </span>
+        </div>
+        <hr>
+        <div><b>Bases désirées:</b>
+            <span ng-repeat="base in vm.wishedBases.items">
+                <a href="#" ng-click="vm.wishedBases.set(base)">{{ vm.base[$index].name }}</a>,
+            </span>
+            <span>
+                <a href="#" ng-click="vm.wishedBases.clear()">Les deux</a>
+            </span>
+        </div>
+        <hr>
+        <div><b>Ingrédients à exclure:</b>
+            <span ng-repeat="ingredientName in vm.wishedIngredients.excluded">
+                <a href="#" ng-click="vm.wishedIngredients.removeExcluded(ingredientName)">{{ ingredientName }}</a>,
+            </span>
+        </div>
+        <hr>
+
+        <b>Pizzas:</b>
+        <div ng-repeat="pizza in vm.pizzas" ng-style="vm.getMatchColor(pizza.score)">
+            {{ pizza.id }}. {{ pizza.name }} <i>({{ pizza.score }})</i>
+            <span ng-repeat="ingredient in pizza.ingredients" ng-class="vm.getIngredientPresentClass(ingredient)">
+                <a href="#" ng-click="vm.wishedIngredients.add(ingredient)">{{ ingredient }}</a>
+                <a href="#" ng-click="vm.wishedIngredients.exclude(ingredient)">(-)</a>, </span>
+            <span><i>(base:{{ vm.base[pizza.base].name }})</i></span>
+        </div>
+
     </div>
+
+    <div ng-switch-default>Chargement...</div>
 
     <hr>
 <!--
