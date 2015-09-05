@@ -12,16 +12,18 @@
         console.log("pizzaFactory");
 
         var service = {
-            "init": init,
-            "content": {
-                "base": [],
-                "ingredients": [],
-                "allPizzas": [],
-                "indexedIngredients": {}
-            }
+            "base": [],
+            "ingredients": [],
+            "allPizzas": [],
+            "indexedIngredients": {}
         };
 
-        return service;
+        var deferred = $q.defer();
+        init().then(function(q) {
+            deferred.resolve(service);
+        });
+
+        return deferred.promise;
 
         ////////////////
 
@@ -51,20 +53,17 @@
 
             pizzas.then(function (p) {
                 console.log("pizzaFactory received all");
-                service.content.base = p.ingredientsPromise.base;
-                service.content.ingredients = p.ingredientsPromise.ingredients;
-                service.content.allPizzas = p.pizzaPromise;
+                service.base = p.ingredientsPromise.base;
+                service.ingredients = p.ingredientsPromise.ingredients;
+                service.allPizzas = p.pizzaPromise;
 
-                _.map(service.content.ingredients, function (ingredient) {
+                _.map(service.ingredients, function (ingredient) {
                     computeFamily(ingredient, []);
                 });
-                _.map(service.content.ingredients, function (ingredient) {
-                    indexFamily(ingredient, service.content.indexedIngredients);
+                _.map(service.ingredients, function (ingredient) {
+                    indexFamily(ingredient, service.indexedIngredients);
                 });
-
-
             });
-
 
             return pizzas;
         }

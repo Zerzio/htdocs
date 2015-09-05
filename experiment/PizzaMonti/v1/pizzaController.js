@@ -15,22 +15,13 @@
         vm.activate = activate;
         vm.title = 'pizzaController';
 
-        vm.content = pizzaFactory.content;
-
         vm.ingredients = [];
-        var allPizzas = pizzaFactory.content.allPizzas;
+        var allPizzas = [];
         vm.base = [];
         vm.indexedIngredients = {};
         vm.pizzas = []; // will be always be mapped to getSortedPizzas();
 
-        var test = pizzaFactory.init().then(function(q) {
-            console.log("pizzaFactory.init returned...");
-            vm.ingredients = pizzaFactory.content.ingredients;
-            allPizzas = pizzaFactory.content.allPizzas;
-            vm.base = pizzaFactory.content.base;
-            vm.indexedIngredients = pizzaFactory.content.indexedIngredients;
-            vm.pizzas = getSortedPizzas();
-        });
+        activate();
 
         vm.wishedIngredients = {
             items: [],
@@ -83,8 +74,6 @@
             if (_.includes(vm.wishedIngredients.items, ingredient)) return "isWished";
             if (_.includes(vm.wishedIngredients.excluded, ingredient)) return "isExcluded";
         };
-
-        activate();
 
         /////////////////////////////////
 
@@ -147,62 +136,14 @@
         ////////////////
 
         function activate() {
-
-            //init();
-
-            // fetch all data
-            function init() {
-                console.log("init()");
-                var pizzaPromise = $http.get('data/ingredients.json').
-                    then(function (response) {
-                        console.log("received Ingredients");
-                        vm.base = response.data.bases;
-                        vm.ingredients = response.data.ingredients;
-
-                        _.map(vm.ingredients, function (ingredient) {
-                            computeFamily(ingredient, []);
-                        });
-
-                        function computeFamily(ingredient, parentFamily) {
-                            ingredient.family = ingredient.family || _.clone(parentFamily);
-                            ingredient.family.push(ingredient.name);
-                            var childFamily = _.clone(ingredient.family);
-                            if (ingredient.as) {
-                                _.map(ingredient.as, function (childIngredient) {
-                                    computeFamily(childIngredient, childFamily);
-                                });
-                            }
-                        }
-
-                        _.map(vm.ingredients, function (ingredient) {
-                            indexFamily(ingredient, vm.indexedIngredients);
-                        });
-
-                        function indexFamily(ingredient, index) {
-                            index[ingredient.name] = ingredient.family;
-                            if (ingredient.as) {
-                                _.map(ingredient.as, function (childIngredient) {
-                                    indexFamily(childIngredient, index);
-                                });
-                            }
-                        }
-
-                    });
-
-                var ingredientsPromise = $http.get('data/pizzas.json').
-                    then(function (response) {
-                        console.log("received Pizzas");
-                        allPizzas = response.data;
-                    });
-
-                $q.all([pizzaPromise, ingredientsPromise]).
-                    then(function (a) {
-                        console.log("received all");
-                        console.log(a);
-                        vm.pizzas = getSortedPizzas();
-                    });
-            }
-
+            pizzaFactory.then(function(service) {
+                console.log("pizzaFactory returned...");
+                vm.ingredients = service.ingredients;
+                allPizzas = service.allPizzas;
+                vm.base = service.base;
+                vm.indexedIngredients = service.indexedIngredients;
+                vm.pizzas = getSortedPizzas();
+            });
         }
     }
 
