@@ -21,6 +21,7 @@
 
         var _indexedIngredients = {};
         var _allPizzas = [];
+        var _rootIngredients = []; // ingredients which are base of family
 
         activate();
 
@@ -54,7 +55,18 @@
                  *  wishedIngredients = { items: [],excluded: [] }
                  *  wishedBases = { items: [0, 1] }
                  */
+
+
                 var ingredients1 = _.union(pizza.ingredients, service.base[pizza.base].ingredients);
+                var rootScore = _.chain(wishedIngredients.items)
+                    .intersection(_rootIngredients)
+                    .reduce(function(acc,ing){
+                        acc += computeRootScore(ing,pizza.ingredients);
+                        return acc;
+                    },0)
+                    .value();
+                console.log(pizza.name + " : " + rootScore);
+
                 var commonIngredients1 = _.intersection(wishedIngredients.items, ingredients1);
                 var percentage1 = Math.round(100 * commonIngredients1.length / wishedIngredients.items.length);
                 if (isNaN(percentage1)) percentage1 = 0;
@@ -69,6 +81,7 @@
                 if (_.intersection(wishedIngredients.excluded, computedPizzaIngredients).length > 0) percentage2 = percentage2 - 201;
 
                 percentage = Math.round((percentage1 + percentage2) / 2);
+                percentage += rootScore * 10;
             }
             if (_.indexOf(wishedBases.items, pizza.base) < 0) percentage = percentage - 101;
 
@@ -89,21 +102,31 @@
             return computedIngredients;
         }
 
+        function computeRootScore(rootIngredient, ingredients) {
+            var rootScore = _.chain(ingredients)
+                .map(function (ingredient) {
+                    return _indexedIngredients[ingredient];
+                })
+                .flatten()
+                .countBy()
+                .value();
+            var score = (rootScore[rootIngredient]) ? rootScore[rootIngredient] : 0;
+            return score;
+        }
+
         ////////////////////////////////////
 
         function activate() {
-            var wishedIngredients = {
-                items: [],
-                excluded: []
-            };
-            var wishedBases = {
-                items: [0, 1]
-            };
-
             pizzaFactory.then(function(pf) {
                 console.log("pizzaFactory returned...");
                 _allPizzas = pf.allPizzas;
                 service.ingredients = pf.ingredients;
+                _rootIngredients = _.reduce(service.ingredients,
+                    function(acc, ing) {
+                        acc.push(ing.name);
+                        return acc;
+                    },
+                    []);
                 service.base = pf.base;
                 _indexedIngredients = pf.indexedIngredients;
 
