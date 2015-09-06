@@ -57,17 +57,31 @@
                 service.ingredients = p.ingredientsPromise.ingredients;
                 service.allPizzas = p.pizzaPromise;
 
-                _.map(service.ingredients, function (ingredient) {
-                    computeFamily(ingredient, []);
-                });
-                _.map(service.ingredients, function (ingredient) {
-                    indexFamily(ingredient, service.indexedIngredients);
-                });
+                service.indexedIngredients = createIndexedIngredients(service.ingredients);
             });
 
             return pizzas;
         }
 
+        function createIndexedIngredients(ingredients) {
+            // working var to calculate family in order to create the index
+            var tempIngredients = _.cloneDeep(ingredients);
+            // add 'family' property to tempIngredients
+            _.map(tempIngredients, function (ingredient) {
+                computeFamily(ingredient, []);
+            });
+            // creates the service.indexedIngredients
+            var indexedIngredients = {};
+            _.map(tempIngredients, function (ingredient) {
+                indexFamily(ingredient, indexedIngredients);
+            });
+            return indexedIngredients;
+        }
+
+        /*
+         *  Add a 'family' property to each ingredient
+         *  the property contains the ingredient itself and all parent ingredients
+         */
         function computeFamily(ingredient, parentFamily) {
             ingredient.family = ingredient.family || _.clone(parentFamily);
             ingredient.family.push(ingredient.name);
@@ -79,6 +93,10 @@
             }
         }
 
+        /*
+         *  Populates an index object (exposed as service.indexedIngredients)
+         *  This index is used for fast retrieval of the hierarchy of an ingredient
+         */
         function indexFamily(ingredient, index) {
             index[ingredient.name] = ingredient.family;
             if (ingredient.as) {

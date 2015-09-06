@@ -5,10 +5,10 @@
         .module('PizzaFinder')
         .controller('pizzaController', pizzaController);
 
-    pizzaController.$inject = ['pizzaFilterFactory','$q','$http'];
+    pizzaController.$inject = ['pizzaFilterFactory'];
 
     /* @ngInject */
-    function pizzaController(pizzaFilterFactory,$q,$http) {
+    function pizzaController(pizzaFilterFactory) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -16,9 +16,9 @@
         vm.loaded = 'loading';
 
         vm.ingredients = [];
-        var allPizzas = [];
+        //var allPizzas = [];
         vm.base = [];
-        vm.indexedIngredients = {};
+        //vm.indexedIngredients = {};
         vm.pizzas = []; // will be always be mapped to getSortedPizzas();
 
         vm.wishedIngredients = {
@@ -82,9 +82,7 @@
             pizzaFilterFactory.isReady.then(function() {
                 console.log("pizzaFactory returned...");
                 vm.ingredients = pizzaFilterFactory.ingredients;
-                allPizzas = pizzaFilterFactory.allPizzas;
                 vm.base = pizzaFilterFactory.base;
-                vm.indexedIngredients = pizzaFilterFactory.indexedIngredients;
                 vm.pizzas = pizzaFilterFactory.getSortedPizzas(vm.wishedIngredients,vm.wishedBases);
 
                 vm.loaded = 'loaded';
