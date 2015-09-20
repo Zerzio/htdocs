@@ -37,6 +37,15 @@
         if (response.status === 'connected') {
             // Logged into your app and Facebook.
             testAPI();
+
+            // code moved here since FB.login has apparently no effect!
+            console.log("configure bucket...");
+            bucket.config.credentials = new AWS.WebIdentityCredentials({
+                ProviderId: 'graph.facebook.com',
+                RoleArn: roleArn,
+                WebIdentityToken: response.authResponse.accessToken
+            });
+
         } else if (response.status === 'not_authorized') {
             // The person is logged into Facebook, but not your app.
             document.getElementById('status').innerHTML = 'Please log ' +
@@ -57,14 +66,6 @@
             console.log('Successful login for: ' + response.name);
             document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.name + '!';
-
-            // code moved here since FB.login has apparently no effect!
-            console.log("configure bucket...");
-            bucket.config.credentials = new AWS.WebIdentityCredentials({
-                ProviderId: 'graph.facebook.com',
-                RoleArn: roleArn,
-                WebIdentityToken: response.authResponse.accessToken
-            });
 
         });
     }
