@@ -57,6 +57,15 @@
             console.log('Successful login for: ' + response.name);
             document.getElementById('status').innerHTML =
                     'Thanks for logging in, ' + response.name + '!';
+
+            // code moved here since FB.login has apparently no effect!
+            console.log("configure bucket...");
+            bucket.config.credentials = new AWS.WebIdentityCredentials({
+                ProviderId: 'graph.facebook.com',
+                RoleArn: roleArn,
+                WebIdentityToken: response.authResponse.accessToken
+            });
+
         });
     }
 
@@ -65,23 +74,16 @@
     var bucketName = 'mouseart-test';
     AWS.config.region = 's3-eu-west-1';
 
-
     var fbUserId;
 
     var bucket = new AWS.S3({
-
         params: {
-
             Bucket: bucketName
-
         }
-
     });
 
     var fileChooser = document.getElementById('file-chooser');
-
     var button = document.getElementById('upload-button');
-
     var results = document.getElementById('results');
 
     button.addEventListener('click', function () {
@@ -89,75 +91,44 @@
         var file = fileChooser.files[0];
 
         if (file) {
-
             results.innerHTML = '';
 
             //Object key will be facebook-USERID#/FILE_NAME
-
             var objKey = 'facebook-' + fbUserId + '/' + file.name;
-
             var params = {
-
                 Key: objKey,
-
                 ContentType: file.type,
-
                 Body: file,
-
                 ACL: 'public-read'
-
             };
 
             bucket.putObject(params, function (err, data) {
-
                 if (err) {
-
                     results.innerHTML = 'ERROR: ' + err;
-
                 } else {
-
                     listObjs();
-
                 }
-
             });
-
         } else {
-
             results.innerHTML = 'Nothing to upload.';
-
         }
-
     }, false);
 
     function listObjs() {
-
+        console.log("listObjs...");
         var prefix = 'facebook-' + fbUserId;
-
         bucket.listObjects({
-
             Prefix: prefix
-
         }, function (err, data) {
-
             if (err) {
-
                 results.innerHTML = 'ERROR: ' + err;
-
             } else {
-
                 var objKeys = "";
-
                 data.Contents.forEach(function (obj) {
-
                     objKeys += obj.Key + "<br>";
-
                 });
-
                 results.innerHTML = objKeys;
-
             }
-
         });
 
     }
@@ -190,15 +161,10 @@ console.log("fbAsyncInit");
 console.log("FB.login...");
         FB.login(function (response) {
 console.log("FB.login");
-
             bucket.config.credentials = new AWS.WebIdentityCredentials({
-
                 ProviderId: 'graph.facebook.com',
-
                 RoleArn: roleArn,
-
                 WebIdentityToken: response.authResponse.accessToken
-
             });
 
             fbUserId = response.authResponse.userID;
