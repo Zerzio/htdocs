@@ -135,14 +135,17 @@
      */
 
     window.fbAsyncInit = function () {
+console.log("fbAsyncInit");
 
         FB.init({
 
-            appId: appId
+            appId: appId,
+            cookie     : true
 
         });
 
         FB.login(function (response) {
+console.log("FB.login");
 
             bucket.config.credentials = new AWS.WebIdentityCredentials({
 
