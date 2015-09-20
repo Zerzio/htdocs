@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza Finder</title>
+    <link rel="stylesheet" href="pizza.css">
+    <script src="vendor/lodash.js"></script>
+    <script src="vendor/angular.min.js"></script>
+    <script src="PizzaFinder.module.js"></script>
+    <script src="pizzaGraphController.js"></script>
+    <script src="pizzaFactory.js"></script>
+    <script src="pizzaGraphFactory.js"></script>
+</head>
+<body ng-app="PizzaFinder">
+
+<div ng-controller="pizzaGraphController as vm" ng-switch="vm.loaded">
+
+    <hr>
+    <div ng-switch-when="loaded">
+
+        <pre>{{ vm.parent2child | json}}</pre>
+
+    </div>
+
+    <div ng-switch-default>Chargement...</div>
+
+    <hr>
+
+
+
+</div>
+
+
+
+</body>
+</html>

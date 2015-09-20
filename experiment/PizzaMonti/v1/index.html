@@ -10,11 +10,13 @@
     <script src="pizzaController.js"></script>
     <script src="pizzaFactory.js"></script>
     <script src="pizzaFilterFactory.js"></script>
+    <script src="pizzaBasketController.js"></script>
+    <script src="pizzaBasketFactory.js"></script>
 </head>
 <body ng-app="PizzaFinder">
 
 <div ng-controller="pizzaController as vm" ng-switch="vm.loaded">
-
+    <b>Prix:</b> {{ vm.basket.price }}
     <hr>
     <div ng-switch-when="loaded">
 
@@ -52,6 +54,8 @@
                 <a href="#" ng-click="vm.wishedIngredients.add(ingredient)">{{ ingredient }}</a>
                 <a href="#" ng-click="vm.wishedIngredients.exclude(ingredient)">(-)</a>, </span>
             <span><i>(base:{{ vm.base[pizza.base].name }})</i></span>
+            <span><a href="#" ng-click="vm.basket.add(pizza,'small')">{{ pizza.price.small }}</a></span>
+            <span><a href="#" ng-click="vm.basket.add(pizza,'big')">{{ pizza.price.big }}</a></span>
         </div>
 
     </div>
@@ -81,6 +85,10 @@
     <pre>{{ vm.ingredients | json}}</pre>
     <pre>{{ vm.indexedIngredients | json}}</pre>
 -->
+</div>
+
+<div ng-controller="pizzaBasketController as basketCtrl">
+    <b>Prix:</b> {{ basketCtrl.basket.price }}
 </div>
 
 </body>
